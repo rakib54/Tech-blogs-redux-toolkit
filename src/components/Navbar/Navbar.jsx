@@ -21,7 +21,7 @@ export default function Navbar() {
               alt="tailwind"
             />
             <span className="text-3xl font-Kaushan cursor-pointer hidden md:block">
-              Rakibur
+              Tech Blogs
             </span>
           </Link>
           <span className="text-3xl cursor-pointer md:hidden block mx-2 p-2  transition-all duration-300">

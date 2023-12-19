@@ -891,6 +891,7 @@ p {
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .lws-tags > :not([hidden]) ~ :not([hidden]) {
