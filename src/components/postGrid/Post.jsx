@@ -12,7 +12,7 @@ export default function Post({ blog }) {
     ));
   }
   if (tags.length > 3) {
-    let updatedTags = tags?.slice(0, 3);
+    let updatedTags = tags?.slice(0, 4);
     tagContent = updatedTags?.map((tag, i) => (
       <span key={i}>
         #{tag}
