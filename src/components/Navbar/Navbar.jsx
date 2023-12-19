@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import image from "../assets/rakib.jpg";
+import image from "../../assets/rakib.jpg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 
@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <div className="font-[Poppins]">
       <nav className="bg-white shadow p-5 md:flex md:justify-between md:items-center">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center ml-12 md:ml-24">
           <Link to={"/"}>
             <img
               className="md:hidden h-10 inline rounded-full ring-1 ring-[#3498db] mr-3"
@@ -78,20 +78,6 @@ export default function Navbar() {
               }}
             >
               BLOGS
-            </NavLink>
-          </li>
-          <li className="mx-4 my-6 md:my-0">
-            <NavLink
-              onClick={toggleMenu}
-              className="text-xl hover:text-cyan-500 duration-500"
-              to={"/contact"}
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? "#3498db" : "",
-                };
-              }}
-            >
-              CONTACT
             </NavLink>
           </li>
           <li className="mx-4 my-6 md:my-0">
