@@ -38,7 +38,7 @@ export default function PostDetails() {
   return (
     <section className="post-page-container">
       {content}
-      <RelatedPost />
+      <RelatedPost tags={blog.tags} />
     </section>
   );
 }

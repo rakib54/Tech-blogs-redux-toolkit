@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-import image from "../../assets/rakib.jpg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 
@@ -15,12 +14,7 @@ export default function Navbar() {
       <nav className="bg-white shadow p-5 md:flex md:justify-between md:items-center">
         <div className="flex justify-between items-center ml-12 md:ml-24">
           <Link to={"/"}>
-            <img
-              className="md:hidden h-10 inline rounded-full ring-1 ring-[#3498db] mr-3"
-              src={image}
-              alt="tailwind"
-            />
-            <span className="text-3xl font-Kaushan cursor-pointer hidden md:block">
+            <span className="text-3xl font-Kaushan cursor-pointer duration-300">
               Tech Blogs
             </span>
           </Link>
