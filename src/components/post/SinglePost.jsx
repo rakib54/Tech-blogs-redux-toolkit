@@ -1,5 +1,26 @@
+import { useDispatch } from "react-redux";
+import {
+  fetchUpdateBlog,
+  fetchUpdateLiked,
+} from "../../features/blog/singleBlogSlice";
+import { useState } from "react";
+
 export default function SinglePost({ blog }) {
-  const { image, title, description, tags, likes } = blog;
+  const { id, image, title, description, tags, likes, isSaved } = blog;
+
+  const dispatch = useDispatch();
+  const [saved, setSaved] = useState(isSaved);
+  const [liked, setLiked] = useState(likes);
+
+  const handleSave = () => {
+    setSaved((prev) => !prev);
+    dispatch(fetchUpdateBlog({ id, isSaved }));
+  };
+  const handleLiked = () => {
+    setLiked((prev) => prev + 1);
+    dispatch(fetchUpdateLiked({ id, likes }));
+  };
+
   return (
     <main className="post">
       <img
@@ -21,13 +42,20 @@ export default function SinglePost({ blog }) {
           ))}
         </div>
         <div className="btn-group">
-          <button className="like-btn" id="lws-singleLinks">
-            <i className="fa-regular fa-thumbs-up"></i> {likes}
+          <button
+            onClick={handleLiked}
+            className={`like-btn ${likes && "active"}`}
+            id="lws-singleLinks"
+          >
+            <i className="fa-regular fa-thumbs-up"></i> {liked}
           </button>
-          {/* handle save on button click
-           use ".active" class and "Saved" text  if a post is saved, other wise "Save" */}
-          <button className="active save-btn" id="lws-singleSavedBtn">
-            <i className="fa-regular fa-bookmark"></i> Saved
+          <button
+            onClick={handleSave}
+            className={`${saved && "active"} save-btn`}
+            id="lws-singleSavedBtn"
+          >
+            <i className="fa-regular fa-bookmark"></i>{" "}
+            {saved ? "Saved" : "Save"}
           </button>
         </div>
         <div className="mt-6">

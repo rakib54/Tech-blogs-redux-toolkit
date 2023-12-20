@@ -8,7 +8,6 @@ export const getRelatedBlogs = async (id, tags) => {
   }
 
   querystring += `&id_ne=${id}&_limit=${limit}`
-  console.log(querystring);
 
   const response = await axios.get(`/blogs/?${querystring}`);
 

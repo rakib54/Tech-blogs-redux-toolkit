@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 export default function Post({ blog }) {
   const { id, title, image, tags, likes, isSaved, createdAt } = blog;
   let tagContent;
-  if (tags.length <= 3) {
+  if (tags?.length <= 3) {
     tagContent = tags?.map((tag, i) => (
       <span key={i}>
         #{tag} {i < tags.length - 1 ? "," : ""}
       </span>
     ));
   }
-  if (tags.length > 3) {
+  if (tags?.length > 3) {
     let updatedTags = tags?.slice(0, 4);
     tagContent = updatedTags?.map((tag, i) => (
       <span key={i}>

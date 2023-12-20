@@ -11,6 +11,7 @@ export default function PostDetails() {
   const { isLoading, blog, error, isError } = useSelector(
     (state) => state.blog
   );
+
   const dispatch = useDispatch();
   const { blogId } = useParams();
 
