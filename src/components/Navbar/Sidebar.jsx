@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { filterBySaved } from "../../features/filter/filterBlogSlice";
 import {
-  filterByDefault,
-  filterBySaved,
   filterByNewest,
   filterByMostLiked,
-} from "../../features/filter/filterBlogSlice";
+  fetchBlogs,
+} from "../../features/blogs/blogsSlice";
 
 export default function Sidebar() {
   const [selectValue, setSelectValue] = useState("default");
@@ -16,18 +16,17 @@ export default function Sidebar() {
     dispatch(filterBySaved(value));
   };
 
-  const handleSelect = (e) => {
-    setSelectValue(e.target.value);
-    // if (selectValue === "default") {
-    //   dispatch(filterByDefault());
-    // }
-    // if (selectValue === "newest") {
-    //   dispatch(filterByNewest());
-    // }
-    // if (selectValue === "most_liked") {
-    //   dispatch(filterByMostLiked());
-    // }
-  };
+  useEffect(() => {
+    if (selectValue === "newest") {
+      dispatch(filterByNewest());
+    }
+    if (selectValue === "most_liked") {
+      dispatch(filterByMostLiked());
+    }
+    if (selectValue === "default") {
+      dispatch(fetchBlogs());
+    }
+  }, [dispatch, selectValue]);
 
   return (
     <aside>
@@ -36,7 +35,7 @@ export default function Sidebar() {
           <h4>Sort</h4>
           <select
             value={selectValue}
-            onChange={(e) => handleSelect(e)}
+            onChange={(e) => setSelectValue(e.target.value)}
             name="sort"
             id="lws-sort"
             className="w-full max-w-[150px] border-2 rounded-md text-gray-500"
