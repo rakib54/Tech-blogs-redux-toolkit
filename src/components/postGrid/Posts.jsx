@@ -9,15 +9,13 @@ export default function Posts() {
   const { isLoading, blogs, error, isError } = useSelector(
     (state) => state.blogs
   );
-  const { isSaved, newest, mostLiked, defaultState } = useSelector(
-    (state) => state.filter
-  );
+  const { filterStatus, sortStatus } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchBlogs());
-  }, [dispatch, isSaved]);
+    dispatch(fetchBlogs({ filterStatus, sortStatus }));
+  }, [dispatch, filterStatus, sortStatus]);
 
   // decide what to render
   let content;
@@ -34,11 +32,6 @@ export default function Posts() {
 
   if (!isLoading && !isError && blogs?.length > 0) {
     content = blogs?.map((blog) => <Post key={blog.id} blog={blog} />);
-  }
-
-  if (!isLoading && !isError && blogs?.length > 0 && isSaved) {
-    const savedBlog = blogs?.filter((blog) => blog.isSaved === true);
-    content = savedBlog?.map((blog) => <Post key={blog.id} blog={blog} />);
   }
 
   return (

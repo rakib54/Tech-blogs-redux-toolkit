@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { filterBySaved } from "../../features/filter/filterBlogSlice";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  filterByNewest,
-  filterByMostLiked,
-  fetchBlogs,
-} from "../../features/blogs/blogsSlice";
+  filterByStatus,
+  sortByStatus,
+} from "../../features/filter/filterBlogSlice";
 
 export default function Sidebar() {
-  const [selectValue, setSelectValue] = useState("default");
+  const { filterStatus } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
 
-  const handleCheckedValue = (value) => {
-    dispatch(filterBySaved(value));
+  const handleStatus = (value) => {
+    dispatch(filterByStatus(value));
   };
-
-  useEffect(() => {
-    if (selectValue === "newest") {
-      dispatch(filterByNewest());
-    }
-    if (selectValue === "most_liked") {
-      dispatch(filterByMostLiked());
-    }
-    if (selectValue === "default") {
-      dispatch(fetchBlogs());
-    }
-  }, [dispatch, selectValue]);
+  const handleSortStatus = (e) => {
+    dispatch(sortByStatus(e.target.value));
+  };
 
   return (
     <aside>
@@ -34,8 +22,7 @@ export default function Sidebar() {
         <div className="sidebar-content">
           <h4>Sort</h4>
           <select
-            value={selectValue}
-            onChange={(e) => setSelectValue(e.target.value)}
+            onChange={(e) => handleSortStatus(e)}
             name="sort"
             id="lws-sort"
             className="w-full max-w-[150px] border-2 rounded-md text-gray-500"
@@ -53,9 +40,9 @@ export default function Sidebar() {
                 type="radio"
                 name="filter"
                 id="lws-all"
-                defaultChecked
                 className="radio"
-                onChange={() => handleCheckedValue(false)}
+                onChange={() => handleStatus("All")}
+                checked={filterStatus === "All"}
               />
               <label htmlFor="lws-all">All</label>
             </div>
@@ -65,7 +52,8 @@ export default function Sidebar() {
                 name="filter"
                 id="lws-saved"
                 className="radio"
-                onChange={() => handleCheckedValue(true)}
+                onChange={() => handleStatus("saved")}
+                checked={filterStatus === "saved"}
               />
               <label htmlFor="lws-saved">Saved</label>
             </div>
