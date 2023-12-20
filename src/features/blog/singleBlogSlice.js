@@ -21,8 +21,8 @@ export const fetchUpdateBlog = createAsyncThunk("fetch/update", async ({ id, isS
   return blogs;
 });
 
-export const fetchUpdateLiked = createAsyncThunk("fetch/updateLike", async ({ id, likes }) => {
-  const blogs = await updateSingleBlogLike(id, likes);
+export const fetchUpdateLiked = createAsyncThunk("fetch/updateLike", async ({ id, liked }) => {
+  const blogs = await updateSingleBlogLike(id, liked);
 
   return blogs;
 });

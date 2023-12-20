@@ -7,18 +7,18 @@ import { useState } from "react";
 
 export default function SinglePost({ blog }) {
   const { id, image, title, description, tags, likes, isSaved } = blog;
-
+  let totalLike = likes;
   const dispatch = useDispatch();
   const [saved, setSaved] = useState(isSaved);
-  const [liked, setLiked] = useState(likes);
+  const [liked, setLiked] = useState(totalLike);
 
   const handleSave = () => {
     setSaved((prev) => !prev);
     dispatch(fetchUpdateBlog({ id, isSaved }));
   };
   const handleLiked = () => {
-    setLiked((prev) => prev + 1);
-    dispatch(fetchUpdateLiked({ id, likes }));
+    setLiked((prevLike) => prevLike + 1);
+    dispatch(fetchUpdateLiked({ id, liked }));
   };
 
   return (
