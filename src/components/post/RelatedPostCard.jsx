@@ -11,7 +11,7 @@ export default function RelatedPostCard({ blog }) {
       <div className="p-4">
         <Link
           to={`/blog/${id}`}
-          className="text-lg post-title lws-RelatedPostTitle"
+          className="text-lg post-title lws-RelatedPostTitle transition duration-300"
         >
           {title}
         </Link>

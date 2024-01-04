@@ -6,7 +6,7 @@ export const getBlogs = async (filterStatus, sortStatus) => {
     queryString += `_sort=id&`
   }
   else if (sortStatus === "newest") {
-    queryString += `_sort=id&_order=desc&`
+    queryString += `_sort=createdAt&_order=desc&`
   }
   else if (sortStatus === "most_liked") {
     queryString += `_sort=likes&_order=desc&`

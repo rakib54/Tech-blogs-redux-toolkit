@@ -46,21 +46,7 @@ export default function Navbar() {
               HOME
             </NavLink>
           </li>
-          <li className="mx-4 my-6 md:my-0">
-            <NavLink
-              onClick={toggleMenu}
-              className="text-xl hover:text-cyan-500 duration-500"
-              to={"/about"}
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? "#3498db" : "",
-                };
-              }}
-            >
-              ABOUT
-            </NavLink>
-          </li>
-          <li className="mx-4 my-6 md:my-0">
+          {/* <li className="mx-4 my-6 md:my-0">
             <NavLink
               onClick={toggleMenu}
               className="text-xl hover:text-cyan-500 duration-500"
@@ -73,12 +59,13 @@ export default function Navbar() {
             >
               BLOGS
             </NavLink>
-          </li>
-          <li className="mx-4 my-6 md:my-0">
+          </li>{" "} */}
+
+          {/* <li className="mx-4 my-6 md:my-0">
             <button className="bg-[#2980b9] px-6 py-2 rounded text-white font-bold text-xl hover:bg-[#3498db] duration-500">
               Get Started
             </button>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

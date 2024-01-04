@@ -33,7 +33,10 @@ export default function Post({ blog }) {
             <i className="fa-regular fa-thumbs-up"></i> {likes}{" "}
           </p>
         </div>
-        <Link to={`/blog/${id}`} className="lws-postTitle">
+        <Link
+          to={`/blog/${id}`}
+          className="lws-postTitle transition duration-300"
+        >
           {" "}
           {title}{" "}
         </Link>
