@@ -1,8 +1,8 @@
-# React + Vite
+## Tech Blogs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Features List
+  - Showing blog data from API
+  - Showing a single blog page individually by calling api for specific blog page
+  - Create a Related Blogs item by using the tag name of that individual blog
+  - User can like or save the blogs
+  - Users can Sort a blogs by using Latest Uploaded and most liked
